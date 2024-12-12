@@ -13,8 +13,14 @@
 #ifndef LIBFT_H
 # define LIBFT_H
 
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 42
+# endif
+
 # include <unistd.h>
 # include <stdlib.h>
+# include <stdarg.h>
+# include <fcntl.h>
 
 typedef struct s_list
 {
@@ -36,14 +42,14 @@ size_t	ft_strlcpy(char *dest, const char *src, size_t size);
 size_t	ft_strlcat(char *dest, const char *src, size_t dstsize);
 int		ft_toupper(int c);
 int		ft_tolower(int c);
-char	*ft_strchr(const char *s, int c);
+char	*ft_strchr(const char *string, int searchedChar);
 char	*ft_strrchr(const char *s, int c);
 int		ft_strncmp(const char *first, const char *second, size_t length);
 void	*ft_memchr(const void *s, int c, size_t n);
 int		ft_memcmp(const void *s1, const void *s2, size_t n);
 char	*ft_strnstr(const char *haystack, const char *needle, size_t n);
 int		ft_atoi(const char *str);
-void	*ft_calloc(size_t count, size_t size);
+void	*ft_calloc(size_t nmemb, size_t size);
 char	*ft_strdup(const char *s1);
 
 void	ft_putstr_fd(char *s, int fd);
@@ -67,5 +73,16 @@ void	ft_lstdelone(t_list *lst, void (*del)(void*));
 void	ft_lstclear(t_list **lst, void (*del)(void*));
 void	ft_lstiter(t_list *lst, void (*f)(void *));
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
+
+char	*ft_nbr_base(unsigned long long n, char *base);
+void	ft_putchar(unsigned char c, size_t *len);
+void	ft_putstr(char *s, size_t *len);
+void	ft_putnbr(int nb, size_t *len);
+void	ft_putuint(unsigned int num, size_t *len);
+void	ft_putptr(void *ptr, size_t *len);
+void	ft_puthex(unsigned int num, char *base, size_t *len);
+int		ft_printf(const char *str, ...);
+
+char	*get_next_line(int fd);
 
 #endif

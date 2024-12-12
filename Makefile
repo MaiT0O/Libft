@@ -22,7 +22,12 @@ SRCS    = ft_isalnum.c ft_isprint.c ft_memcmp.c  ft_putchar_fd.c \
 BONUS	= ft_lstadd_back_bonus.c ft_lstadd_front_bonus.c ft_lstclear_bonus.c ft_lstdelone_bonus.c ft_lstiter_bonus.c \
 			ft_lstlast_bonus.c ft_lstmap_bonus.c ft_lstnew_bonus.c ft_lstsize_bonus.c
 
+PRINTF = printf/ft_put.c printf/ft_puthex.c printf/ft_nbr_base.c printf/ft_printf.c
+
+GNL = gnl/get_next_line.c
+
 NAME    = libft.a
+EXEC	= a.out
 
 CC		= gcc
 
@@ -31,8 +36,9 @@ CFLAGS	= -Wall -Wextra -Werror
 AR		= ar rcs
 
 OBJS    =  ${SRCS:.c=.o}
-
 BONUS_OBJS = ${BONUS:.c=.o}
+PRINTF_OBJS = ${PRINTF:.c=.o}
+GNL_OBJS = ${GNL:.c=.o}
 
 %.o: %.c
 	$(CC) $(CFLAGS) -c $< -o $@
@@ -43,12 +49,18 @@ ${NAME} : ${OBJS}
 bonus : ${OBJS} ${BONUS_OBJS} 
 	${AR} ${NAME} ${OBJS} ${BONUS_OBJS}
 
-all : ${NAME}
+42 : ${OBJS} ${BONUS_OBJS} ${PRINTF_OBJS} ${GNL_OBJS}
+	${AR} ${NAME} ${OBJS} ${BONUS_OBJS} ${PRINTF_OBJS} ${GNL_OBJS}
+
+$(EXEC): ${SRCS_OBJ} ${BONUS_OBJ} ${PRINTF_OBJ} ${GNL_OBJ} main.c ${NAME}
+	$(CC) $(CFLAGS) main.c -o $(EXEC) ${NAME}
+
+all : 42 $(EXEC)
 
 clean :
-	rm -f ${OBJS} ${BONUS_OBJS}
+	rm -f ${OBJS} ${BONUS_OBJS} ${PRINTF_OBJS} ${GNL_OBJS}
 
 fclean : clean
-	rm -f ${NAME}
+	rm -f ${NAME} $(EXEC)
 
-re : fclean ${NAME}
+re : fclean all

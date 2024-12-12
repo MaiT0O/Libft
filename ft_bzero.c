@@ -6,7 +6,7 @@
 /*   By: ebansse <ebansse@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/05 14:21:13 by ebansse           #+#    #+#             */
-/*   Updated: 2024/11/08 15:03:03 by ebansse          ###   ########.fr       */
+/*   Updated: 2024/12/09 15:36:16 by ebansse          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,12 +16,10 @@ void	ft_bzero(void *s, size_t n)
 {
 	size_t	i;
 
-	if (n == 0)
-		return ;
 	i = 0;
 	while (i < n)
 	{
-		*(char *)(s + i) = 0;
-		i ++;
+		*(unsigned char *)(s + i) = '\0';
+		i++;
 	}
 }

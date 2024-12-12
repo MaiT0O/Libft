@@ -1,26 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strchr.c                                        :+:      :+:    :+:   */
+/*   ft_puthex.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ebansse <ebansse@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/05 16:52:49 by ebansse           #+#    #+#             */
-/*   Updated: 2024/12/09 15:40:43 by ebansse          ###   ########.fr       */
+/*   Created: 2024/11/13 18:09:28 by ebansse           #+#    #+#             */
+/*   Updated: 2024/12/09 15:48:13 by ebansse          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../libft.h"
 
-char	*ft_strchr(const char *string, int searchedChar)
+void	ft_puthex(unsigned int num, char *base, size_t *len)
 {
 	char	*str;
 
-	str = (char *)string;
-	while (*str != searchedChar && *str != 0)
-		str++;
-	if (*str == searchedChar)
-		return (str);
-	else
-		return (NULL);
+	str = ft_nbr_base(num, base);
+	ft_putstr(str, len);
+	free(str);
 }
