@@ -26,6 +26,8 @@ PRINTF = printf/ft_put.c printf/ft_puthex.c printf/ft_nbr_base.c printf/ft_print
 
 GNL = gnl/get_next_line.c
 
+CUSTOM = custom/ft_str_only_chr.c
+
 NAME    = libft.a
 EXEC	= a.out
 
@@ -39,28 +41,23 @@ OBJS    =  ${SRCS:.c=.o}
 BONUS_OBJS = ${BONUS:.c=.o}
 PRINTF_OBJS = ${PRINTF:.c=.o}
 GNL_OBJS = ${GNL:.c=.o}
+CUSTOM_OBJS = ${CUSTOM:.c=.o}
 
 %.o: %.c
 	$(CC) $(CFLAGS) -c $< -o $@
 
-${NAME} : ${OBJS}
-	${AR} ${NAME} ${OBJS}
+${NAME} : ${OBJS} ${BONUS_OBJS} ${PRINTF_OBJS} ${GNL_OBJS} ${CUSTOM_OBJS}
+	${AR} ${NAME} ${OBJS} ${BONUS_OBJS} ${PRINTF_OBJS} ${GNL_OBJS} ${CUSTOM_OBJS}
 
 bonus : ${OBJS} ${BONUS_OBJS} 
 	${AR} ${NAME} ${OBJS} ${BONUS_OBJS}
 
-42 : ${OBJS} ${BONUS_OBJS} ${PRINTF_OBJS} ${GNL_OBJS}
-	${AR} ${NAME} ${OBJS} ${BONUS_OBJS} ${PRINTF_OBJS} ${GNL_OBJS}
-
-$(EXEC): ${SRCS_OBJ} ${BONUS_OBJ} ${PRINTF_OBJ} ${GNL_OBJ} main.c ${NAME}
-	$(CC) $(CFLAGS) main.c -o $(EXEC) ${NAME}
-
-all : 42 $(EXEC)
+all : ${NAME}
 
 clean :
-	rm -f ${OBJS} ${BONUS_OBJS} ${PRINTF_OBJS} ${GNL_OBJS}
+	rm -f ${OBJS} ${BONUS_OBJS} ${PRINTF_OBJS} ${GNL_OBJS} ${CUSTOM_OBJS}
 
 fclean : clean
-	rm -f ${NAME} $(EXEC)
+	rm -f ${NAME}
 
 re : fclean all
