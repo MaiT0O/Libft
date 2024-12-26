@@ -85,6 +85,7 @@ int		ft_printf(const char *str, ...);
 
 char	*get_next_line(int fd);
 
-char	*ft_str_only_chr(char *string, int searchedChar);
+int		ft_str_only_chr(char *str, char searchedChar);
+int		ft_strcmp(char *first, char *second);
 
 #endif

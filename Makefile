@@ -26,7 +26,7 @@ PRINTF = printf/ft_put.c printf/ft_puthex.c printf/ft_nbr_base.c printf/ft_print
 
 GNL = gnl/get_next_line.c
 
-CUSTOM = custom/ft_str_only_chr.c
+CUSTOM = custom/ft_str_only_chr.c custom/ft_strcmp.c
 
 NAME    = libft.a
 EXEC	= a.out

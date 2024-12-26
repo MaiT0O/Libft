@@ -1,11 +1,15 @@
 #include "../libft.h"
 
-char	*ft_str_only_chr(char *str, int searchedChar)
+int	ft_str_only_chr(char *str, char searchedChar)
 {
-	while (*str == searchedChar && *str != 0)
-		str++;
-	if (*str != searchedChar && *str != 0)
-		return (str);
-	else
-		return (NULL);
+	int	i;
+
+	i = 0;
+    while (str[i] != '\0' && str[i] != '\n')
+    {
+        if (str[i] != searchedChar)
+            return (0);
+        i++;
+    }
+    return (1);
 }
