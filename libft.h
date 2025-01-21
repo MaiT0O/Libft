@@ -88,5 +88,6 @@ char	*get_next_line(int fd);
 
 int		ft_str_only_chr(char *str, char searchedChar);
 int		ft_strcmp(char *first, char *second);
+char	*ft_strncpy(char *s1, char *s2, int n);
 
 #endif

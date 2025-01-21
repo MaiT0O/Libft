@@ -29,7 +29,6 @@ GNL = gnl/get_next_line.c
 CUSTOM = custom/ft_str_only_chr.c custom/ft_strcmp.c custom/ft_strncpy.c
 
 NAME    = libft.a
-EXEC	= a.out
 
 CC		= gcc
 
