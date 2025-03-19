@@ -26,7 +26,7 @@ PRINTF = printf/ft_put.c printf/ft_puthex.c printf/ft_nbr_base.c printf/ft_print
 
 GNL = gnl/get_next_line.c
 
-CUSTOM = custom/ft_str_only_chr.c custom/ft_strcmp.c custom/ft_strncpy.c
+CUSTOM = custom/ft_str_only_chr.c custom/ft_strcmp.c custom/ft_strncpy.c custom/ft_atoi_custom.c
 
 NAME    = libft.a
 
@@ -42,6 +42,9 @@ PRINTF_OBJS = ${PRINTF:.c=.o}
 GNL_OBJS = ${GNL:.c=.o}
 CUSTOM_OBJS = ${CUSTOM:.c=.o}
 
+all : ${NAME}
+	${MAKE} clean
+
 %.o: %.c
 	$(CC) $(CFLAGS) -c $< -o $@
 
@@ -51,8 +54,6 @@ ${NAME} : ${OBJS} ${BONUS_OBJS} ${PRINTF_OBJS} ${GNL_OBJS} ${CUSTOM_OBJS}
 bonus : ${OBJS} ${BONUS_OBJS} 
 	${AR} ${NAME} ${OBJS} ${BONUS_OBJS}
 
-all : ${NAME}
-
 clean :
 	rm -f ${OBJS} ${BONUS_OBJS} ${PRINTF_OBJS} ${GNL_OBJS} ${CUSTOM_OBJS}
 
@@ -60,3 +61,4 @@ fclean : clean
 	rm -f ${NAME}
 
 re : fclean all
+	${MAKE} clean

@@ -21,6 +21,7 @@
 # include <stdlib.h>
 # include <stdarg.h>
 # include <fcntl.h>
+# include <limits.h>
 
 typedef struct s_list
 {
@@ -89,5 +90,6 @@ char	*get_next_line(int fd);
 int		ft_str_only_chr(char *str, char searchedChar);
 int		ft_strcmp(char *first, char *second);
 char	*ft_strncpy(char *s1, char *s2, int n);
+long	ft_atoi_custom(const char *str);
 
 #endif
